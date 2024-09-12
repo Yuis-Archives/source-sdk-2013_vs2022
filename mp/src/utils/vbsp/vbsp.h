@@ -653,5 +653,17 @@ void RemoveAreaPortalBrushes_R( node_t *node );
 
 dtexdata_t *GetTexData( int index );
 
+#if 0
+enum WORLDBRUSH_ENTITIES // To be used for certain for loops; commented out with #if 0 until needed.
+{
+	"func_group",			// regular world brush, with custom VBSP-specific commands
+	"func_detail",			// detail brush
+	"func_detail_illusionary",	// detail brush, nonsolid
+	"func_detail_wall",		// alias for func_detail
+	"func_detail_fence",		// alias for func_detail
+	"func_ladder",			// ladder (and detail)
+	"func_ladder_viscutter",	// ladder which cuts visleaves (use for $translucent ladders)
+	"func_illusionary_visblocker",	// nonsolid, blocks vis
+};
 #endif
 
