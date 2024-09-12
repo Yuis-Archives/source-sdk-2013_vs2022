@@ -7,6 +7,9 @@
 $Macro SRCDIR		"..\.."
 $Macro OUTBINDIR	"$SRCDIR\..\game\bin"
 
+// rename EXE to allow installation alongside vbsp.exe
+$Macro OUTBINNAME	"ybsp"
+
 $Include "$SRCDIR\vpc_scripts\source_exe_con_base.vpc"
 
 $Configuration
