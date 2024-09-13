@@ -1033,6 +1033,10 @@ int RunVBSP( int argc, char **argv )
 			Msg ("noleaktest = true\n");
 			noleaktest = true;
 		}
+		else if (!Q_stricmp(argv[i], "-leaktest"))
+		{
+			// keep option around to for backwards compatibility with existing compile configs
+		}
 #else
 		else if (!Q_stricmp(argv[i], "-leaktest"))
 		{
@@ -1185,7 +1189,7 @@ int RunVBSP( int argc, char **argv )
 			g_pFullFileSystem->AddSearchPath( g_szEmbedDir, "GAME", PATH_ADD_TO_TAIL );
 			g_pFullFileSystem->AddSearchPath( g_szEmbedDir, "MOD", PATH_ADD_TO_TAIL );
 		}
-else if ( !Q_stricmp( argv[i], "-nohiddenmaps" ) )
+		else if ( !Q_stricmp( argv[i], "-nohiddenmaps" ) )
 		{
 			g_bNoHiddenManifestMaps = true;
 		}
