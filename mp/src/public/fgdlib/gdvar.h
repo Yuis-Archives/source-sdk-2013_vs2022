@@ -92,6 +92,13 @@ class GDinputvariable
 
 		inline GDIV_TYPE GetType() { return m_eType; }
 		const char *GetTypeText(void);
+
+		// From Mapbase:
+		// The FGD library normally enforces that variable types should always stay the same.
+		// The new AI node remapping code needs to change the "nodeid" keyvalue on AI nodes so
+		// it's properly recognized as a node ID which needs to be remapped.
+		// That's what this hack is for.
+		inline void ForceSetType( GDIV_TYPE newType ) { m_eType = newType; }
 		
 		inline void GetDefault(int *pnStore)
 		{ 
