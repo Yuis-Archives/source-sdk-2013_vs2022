@@ -2131,7 +2131,7 @@ void CMapFile::CheckForInstances( const char *pszFileName )
 				char	path[ MAX_PATH ];
 				bool	bLoaded = false;
 
-#ifdef MAPBASE
+#if 1
 				if ( DeterminePath( pszFileName, pInstanceFile, InstancePath ) || DeterminePath( g_MainMapPath, pInstanceFile, InstancePath ) )
 #else
 				if ( DeterminePath( pszFileName, pInstanceFile, InstancePath ) )
