@@ -20,8 +20,10 @@
 #include "byteswap.h"
 #include "worldvertextransitionfixup.h"
 
+#ifdef MAPBASE_VSCRIPT
 #include "vscript/ivscript.h"
 #include "vscript_vbsp.h"
+#ifdef
 
 extern float		g_maxLightmapDimension;
 
@@ -70,7 +72,9 @@ bool		g_bPropperInsertAllAsStatic = false;
 bool		g_bPropperStripEntities = false;
 int			g_iDefaultCubemapSize = 32;
 
+#ifdef MAPBASE_VSCRIPT
 ScriptLanguage_t	g_iScripting = SL_NONE;
+#endif
 
 float		g_defaultLuxelSize = DEFAULT_LUXEL_SIZE;
 float		g_luxelScale = 1.0f;
@@ -1215,6 +1219,7 @@ else if ( !Q_stricmp( argv[i], "-nohiddenmaps" ) )
 		{
 			g_bPropperStripEntities = true;
 		}
+#ifdef MAPBASE_VSCRIPT
 		else if ( !Q_stricmp( argv[i], "-scripting" ) )
 		{
 			const char *pszScriptLanguage = argv[i + 1];
@@ -1279,6 +1284,7 @@ else if ( !Q_stricmp( argv[i], "-nohiddenmaps" ) )
 			CmdLib_Cleanup();
 			CmdLib_Exit( 1 );
 		}
+#endif
 		else if (argv[i][0] == '-')
 		{
 			Warning("VBSP: Unknown option \"%s\"\n\n", argv[i]);
@@ -1427,12 +1433,14 @@ else if ( !Q_stricmp( argv[i], "-nohiddenmaps" ) )
 	InitMaterialSystem( materialPath, CmdLib_GetFileSystemFactory() );
 	Msg( "materialPath: %s\n", materialPath );
 
+#ifdef MAPBASE_VSCRIPT
 	if (g_iScripting)
 	{
 		scriptmanager = (IScriptManager*)Sys_GetFactoryThis()(VSCRIPT_INTERFACE_VERSION, NULL);
 
 		VScriptVBSPInit();
 	}
+#endif
 
 	// delete portal and line files
 	sprintf (path, "%s.prt", g_source);
@@ -1560,7 +1568,9 @@ else if ( !Q_stricmp( argv[i], "-nohiddenmaps" ) )
 	ReleasePakFileLumps();
 	DeleteMaterialReplacementKeys();
 	ShutdownMaterialSystem();
+#ifdef MAPBASE_VSCRIPT
 	VScriptVBSPTerm();
+#endif
 	CmdLib_Cleanup();
 	return 0;
 }

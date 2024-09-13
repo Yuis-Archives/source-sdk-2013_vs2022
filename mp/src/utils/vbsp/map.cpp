@@ -18,7 +18,7 @@
 #ifdef PARALLAX_CORRECTED_CUBEMAPS
 #include "matrixinvert.h"
 #endif
-#ifdef 1
+#ifdef MAPBASE_VSCRIPT
 #include "vscript_vbsp.h"
 #endif
 
@@ -2811,6 +2811,7 @@ bool LoadMapFile( const char *pszFileName )
 
 	if ((eResult == ChunkFile_Ok) || (eResult == ChunkFile_EOF))
 	{
+#ifdef MAPBASE_VSCRIPT
 		if ( g_pScriptVM )
 		{
 			if (CMapFile::g_Hook_OnMapLoaded.CanRunInScope( NULL ))
@@ -2823,6 +2824,7 @@ bool LoadMapFile( const char *pszFileName )
 				//g_pScriptVM->ClearValue( "map" );
 			}
 		}
+#endif
 
 		// Update the overlay/side list(s).
 		Overlay_UpdateSideLists( g_LoadingMap->m_StartMapOverlays );
@@ -3378,6 +3380,7 @@ ChunkFileResult_t LoadSolidKeyCallback(const char *szKey, const char *szValue, m
 }
 
 
+#ifdef MAPBASE_VSCRIPT
 //-----------------------------------------------------------------------------
 // Purpose: 
 //-----------------------------------------------------------------------------
@@ -3501,6 +3504,7 @@ int CMapFile::ScriptAddInstance( const char *pszVMF, const Vector& vecOrigin, co
 
 	return num_entities - 1;
 }
+#endif
 
 
 /*

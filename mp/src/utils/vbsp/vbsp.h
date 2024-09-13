@@ -20,7 +20,9 @@
 #include "utilmatlib.h"
 #include "ChunkFile.h"
 
+#ifdef MAPBASE_VSCRIPT
 #include "vscript/ivscript.h"
+#endif
 
 #ifdef WIN32
 #pragma warning( disable: 4706 )
@@ -341,6 +343,7 @@ public:
 	int					m_StartMapOverlays;
 	int					m_StartMapWaterOverlays;
 
+#ifdef MAPBASE_VSCRIPT
 	HSCRIPT				GetScriptInstance();
 
 	static ScriptHook_t	g_Hook_OnMapLoaded;
@@ -366,6 +369,7 @@ private:
 	int				GetNumEntities() { return num_entities; }
 
 	HSCRIPT			m_hScriptInstance;
+#endif
 };
 
 extern CMapFile	*g_MainMap;
