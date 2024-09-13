@@ -48,7 +48,7 @@ qboolean	noshare;
 qboolean	nosubdiv;
 qboolean	notjunc;
 qboolean	noopt;
-#ifdef 1
+#if 1
 qboolean	noleaktest;
 #else
 qboolean	leaktest;
@@ -315,7 +315,7 @@ void ProcessWorldModel (void)
 			Warning( ("**** leaked ****\n") );
 			leaked = true;
 			LeakFile (tree);
-#ifdef 1
+#if 1
 			if (!noleaktest)
 #else
 			if (leaktest)
@@ -1027,7 +1027,7 @@ int RunVBSP( int argc, char **argv )
 			Msg ("microvolume = %f\n", microvolume);
 			i++;
 		}
-#ifdef 1
+#if 1
 		else if (!Q_stricmp(argv[i], "-noleaktest"))
 		{
 			Msg ("noleaktest = true\n");
