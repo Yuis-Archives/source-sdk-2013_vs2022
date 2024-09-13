@@ -131,12 +131,6 @@ int	FindMiptex (const char *name)
 		textureref[i].contents |= CONTENTS_MONSTERCLIP;
 		textureref[i].flags |= SURF_NODRAW | SURF_NOLIGHT;
 	}
-	// handle surface lights which are meant to 
-	else if ( ( propVal = GetMaterialVar( matID, "%compileNoChop" ) ) &&
-		StringIsTrue( propVal ) )
-	{
-		textureref[i].flags |= SURF_NOCHOP;
-	}
 	// handle triggers
 	else if ( ( propVal = GetMaterialVar( matID, "%compileTrigger" ) ) &&
 		StringIsTrue( propVal ) )
@@ -147,20 +141,29 @@ int	FindMiptex (const char *name)
 			textureref[i].flags |= SURF_NODRAW;
 		}
 	}
-	// handle nolight surfs (except water)
-	else if ( (( propVal = GetMaterialVar( matID, "%compileNoLight" ) ) && StringIsTrue( propVal )) && 
-		!(( propVal2 = GetMaterialVar( matID, "%compileWater" ) ) && StringIsTrue( propVal2 ) ) )
-	{
-		textureref[i].flags |= SURF_NOLIGHT;
-	}
-	// handle Slammin-inspired %compileNoShadows%
-	else if ( ( propVal = GetMaterialVar( matID, "%compileNoShadows" ) ) && StringIsTrue( propVal ) )
-	{
-		textureref[i].flags |= SURF_NOSHADOWS;
-	}
 	else
 	{
 		// HANDLE ALL OF THE STUFF THAT IS RENDERED WITH THE MATERIAL THAT IS ON IT.
+		
+		// handle texlights which aren't supposed to be subdivided by RAD
+		if ( ( propVal = GetMaterialVar( matID, "%compileNoChop" ) ) &&
+			StringIsTrue( propVal ) )
+		{
+			textureref[i].flags |= SURF_NOCHOP;
+		}
+
+		// handle nolight surfs (except water)
+		if ( (( propVal = GetMaterialVar( matID, "%compileNoLight" ) ) && StringIsTrue( propVal )) && 
+			!(( propVal2 = GetMaterialVar( matID, "%compileWater" ) ) && StringIsTrue( propVal2 ) ) )
+		{
+			textureref[i].flags |= SURF_NOLIGHT;
+		}
+		
+		// handle Slammin-inspired %compileNoShadows%
+		if ( ( propVal = GetMaterialVar( matID, "%compileNoShadows" ) ) && StringIsTrue( propVal ) )
+		{
+			textureref[i].flags |= SURF_NOSHADOWS;
+		}
 
 		// Handle ladders.
 		if ( ( propVal = GetMaterialVar( matID, "%compileLadder" ) ) &&	StringIsTrue( propVal ) )
