@@ -2132,9 +2132,9 @@ void CMapFile::CheckForInstances( const char *pszFileName )
 				bool	bLoaded = false;
 
 #if 1
-				if ( DeterminePath( pszFileName, pInstanceFile, InstancePath ) || DeterminePath( g_MainMapPath, pInstanceFile, InstancePath ) )
+				if ( DeterminePath( pszFileName, pInstanceFile, path ) || DeterminePath( g_MainMapPath, pInstanceFile, path ) )
 #else
-				if ( DeterminePath( pszFileName, pInstanceFile, InstancePath ) )
+				if ( DeterminePath( pszFileName, pInstanceFile, path ) )
 #endif
 				{
 					if ( LoadMapFile( path ) )
