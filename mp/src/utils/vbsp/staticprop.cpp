@@ -104,6 +104,8 @@ isstaticprop_ret IsStaticProp( studiohdr_t* pHdr )
 	if (!(pHdr->flags & STUDIOHDR_FLAGS_STATIC_PROP))
 		return RET_FAIL_NOT_MARKED_STATIC_PROP;
 
+#if ENFORCE_STATICPROP_CONSISTENCY
+	// This is bogus; any $staticprop can be used as prop_static
 	// If it's got a propdata section in the model's keyvalues, it's not allowed to be a prop_static
 	KeyValues *modelKeyValues = new KeyValues(pHdr->pszName());
 	if ( StudioKeyValues( pHdr, modelKeyValues ) )
@@ -119,6 +121,7 @@ isstaticprop_ret IsStaticProp( studiohdr_t* pHdr )
 		}
 	}
 	modelKeyValues->deleteThis();
+#endif
 
 	return RET_VALID;
 }
@@ -569,6 +572,8 @@ static void SetLumpData( )
 
 void EmitStaticProps()
 {
+	Msg("Placing static props...\n");
+
 	CreateInterfaceFn physicsFactory = GetPhysicsFactory();
 	if ( physicsFactory )
 	{
@@ -592,13 +597,38 @@ void EmitStaticProps()
 	for ( i = 0; i < num_entities; ++i)
 	{
 		char* pEntity = ValueForKey(&entities[i], "classname");
-		if (!strcmp(pEntity, "static_prop") || !strcmp(pEntity, "prop_static"))
+
+		const int iInsertAsStatic = IntForKey( &entities[i], "insertasstaticprop" ); // If the key is absent, IntForKey will return 0.
+		bool bInsertAsStatic = g_bPropperInsertAllAsStatic;
+
+		// 1 = No, 2 = Yes;  Any other number will just use what g_bPropperInsertAllAsStatic is set as.
+		if ( iInsertAsStatic == 1 ) { bInsertAsStatic = false; }
+		else if ( iInsertAsStatic == 2 ) { bInsertAsStatic = true; }
+
+		if ( !strcmp( pEntity, "static_prop" ) || !strcmp( pEntity, "prop_static" ) || ( !strcmp( pEntity, "propper_model" ) && bInsertAsStatic ) )
 		{
 			StaticPropBuild_t build;
 
 			GetVectorForKey( &entities[i], "origin", build.m_Origin );
 			GetAnglesForKey( &entities[i], "angles", build.m_Angles );
-			build.m_pModelName = ValueForKey( &entities[i], "model" );
+			
+			if ( !strcmp( pEntity, "propper_model" ) )
+			{
+				char* pModelName = ValueForKey( &entities[i], "modelname" );
+			
+				// The modelname keyvalue lacks 'models/' at the start and '.mdl' at the end, so we have to add them.	
+				char modelpath[MAX_VALUE];
+				sprintf( modelpath, "models/%s.mdl", pModelName );
+
+				Msg( "Inserting propper_model (%.0f %.0f %.0f) as prop_static: %s\n", build.m_Origin[0], build.m_Origin[1], build.m_Origin[2], modelpath );
+
+				build.m_pModelName = modelpath;
+			}
+			else // Otherwise we just assume it's a normal prop_static
+			{
+				build.m_pModelName = ValueForKey( &entities[i], "model" );
+			}
+
 			build.m_Solid = IntForKey( &entities[i], "solid" );
 			build.m_Skin = IntForKey( &entities[i], "skin" );
 			build.m_FadeMaxDist = FloatForKey( &entities[i], "fademaxdist" );
@@ -665,6 +695,12 @@ void EmitStaticProps()
 			AddStaticPropToLump( build );
 
 			// strip this ent from the .bsp file
+			entities[i].epairs = 0;
+		}
+
+		else if ( g_bPropperStripEntities && !strncmp( pEntity, "propper_", 8 ) ) // Strip out any entities with 'propper_' in their classname, as they don't actually exist in-game.
+		{
+			Warning( "Not including %s in BSP compile due to it being a propper entity that isn't used in-game.\n", pEntity );
 			entities[i].epairs = 0;
 		}
 	}

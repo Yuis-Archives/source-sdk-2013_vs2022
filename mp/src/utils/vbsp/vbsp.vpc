@@ -69,6 +69,15 @@ $Project "Vbsp"
 		$File	"writebsp.cpp"
 		$File	"$SRCDIR\public\zip_utils.cpp"
 
+		// MAPBASE_VSCRIPT stuff
+		$File	"vscript_vbsp.cpp"
+		$File	"vscript_vbsp.h"
+		$File	"vscript_vbsp.nut"
+		$File	"vscript_funcs_vmfs.cpp"
+		$File	"vscript_funcs_vmfs.h"
+		$File	"vscript_funcs_vis.cpp"
+		$File	"vscript_funcs_vis.h"
+
 		$Folder	"Common Files"
 		{
 			$File	"..\common\bsplib.cpp"
@@ -182,6 +191,7 @@ $Project "Vbsp"
 		$Lib tier2
 		$Lib vtf
 		$Lib "$LIBCOMMON/lzma"
+		$Lib vscript
 	}
 
 	$File	"notes.txt"

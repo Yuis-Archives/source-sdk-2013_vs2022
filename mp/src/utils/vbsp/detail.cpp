@@ -440,6 +440,7 @@ face_t *MakeBrushFace( side_t *originalSide, winding_t *winding )
 	f->split[0] = f->split[1] = NULL;
 	f->w = CopyWinding( winding );
 	f->originalface = originalSide;
+	f->smoothingGroups = originalSide->smoothingGroups; // smoothing group fix source-sdk-2013#391
 	//
 	// save material info
 	//
