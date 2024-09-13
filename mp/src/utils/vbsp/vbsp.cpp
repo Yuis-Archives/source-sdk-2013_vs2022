@@ -23,7 +23,7 @@
 #ifdef MAPBASE_VSCRIPT
 #include "vscript/ivscript.h"
 #include "vscript_vbsp.h"
-#ifdef
+#endif
 
 extern float		g_maxLightmapDimension;
 

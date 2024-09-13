@@ -393,7 +393,7 @@ bool CManifest::LoadSubMaps( CMapFile *pMapFile, const char *pszFileName )
 	memset( InstanceEntity, 0, sizeof( *InstanceEntity ) );
 
 	InstanceEntity->origin.Init( 0.0f, 0.0f, 0.0f );
-#ifdef 1
+#if 1
 	g_ManifestWorldSpawn = InstanceEntity;
 #else
 	pEPair = CreateEPair( "classname", "worldspawn" );

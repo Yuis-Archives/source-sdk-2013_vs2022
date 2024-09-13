@@ -2102,7 +2102,7 @@ void CMapFile::CheckForInstances( const char *pszFileName )
 	}
 
 	char	FDGPath[ MAX_PATH ];
-#ifdef 0
+#if 0
 	// Mapbase's FGD would be in a MOD path
 	// TODO - check both
 	if ( !g_pFullFileSystem->RelativePathToFullPath( GameDataFile, "MOD", FDGPath, sizeof( FDGPath ) ) )
