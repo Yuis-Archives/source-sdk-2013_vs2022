@@ -1591,7 +1591,7 @@ ChunkFileResult_t CMapFile::LoadEntityCallback(CChunkFile *pFile, int nParam)
 		//
 		const char *pClassName = ValueForKey( mapent, "classname" );
 
-		if ( !strcmp( "func_detail", pClassName ) )
+		if ( (!strcmp( "func_detail", pClassName ) ) || (!strcmp( "func_group", pClassName ) ) )
 		{
 			MoveBrushesToWorld (mapent);
 			mapent->numbrushes = 0;
