@@ -159,7 +159,7 @@ int	FindMiptex (const char *name)
 			textureref[i].flags |= SURF_NOLIGHT;
 		}
 		
-		// handle Slammin-inspired %compileNoShadows%
+		// handle Slammin-inspired %CompileNoShadows
 		if ( ( propVal = GetMaterialVar( matID, "%compileNoShadows" ) ) && StringIsTrue( propVal ) )
 		{
 			textureref[i].flags |= SURF_NOSHADOWS;
@@ -169,6 +169,19 @@ int	FindMiptex (const char *name)
 		if ( ( propVal = GetMaterialVar( matID, "%compileLadder" ) ) &&	StringIsTrue( propVal ) )
 		{
 			textureref[i].contents |= CONTENTS_LADDER;
+		}
+
+		// Handle L4D-style %CompileTeam
+		if ( ( propVal = GetMaterialVar( matID, "%compileTeam" ) ) )
+		{
+			if ( ( atoi(propval) ) == 1 )
+			{
+				textureref[i].contents |= CONTENTS_TEAM1;
+			}
+			else if ( ( atoi(propval) ) == 2 )
+			{
+				textureref[i].contents |= CONTENTS_TEAM2;
+			}
 		}
 
 		// handle wet materials
