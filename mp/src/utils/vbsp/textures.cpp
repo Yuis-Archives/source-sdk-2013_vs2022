@@ -462,7 +462,7 @@ int	FindMiptex (const char *name)
 		}
 		if ( ( propVal = GetMaterialVar( matID, "%surf_noportal" ) ) &&	StringIsTrue( propVal ) )
 		{
-			textureref[i].contents |= SURF_NORPORTAL;
+			textureref[i].contents |= SURF_NOPORTAL;
 		}
 		if ( ( propVal = GetMaterialVar( matID, "%surf_trigger" ) ) &&	StringIsTrue( propVal ) )
 		{
