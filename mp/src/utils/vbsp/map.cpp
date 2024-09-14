@@ -1601,6 +1601,17 @@ ChunkFileResult_t CMapFile::LoadEntityCallback(CChunkFile *pFile, int nParam)
 			return(ChunkFile_Ok);
 		}
 
+		//
+		// info_null entities get renamed to _null to prevent vanilla game
+		// code from treating them as edicts for one tick upon map spawn
+		// This causes an error in the console, but that can be ignored
+		// just like with info_ladder
+		//
+		if ( !strcmp( "info_null", pClassName ) )
+		{
+			SetKeyValue( mapent, "classname", "_null" );
+		}
+
 		// these get added to a list for processing the portal file
 		// but aren't necessary to emit to the BSP
 		if ( !strcmp( "func_viscluster", pClassName ) )
@@ -1610,8 +1621,8 @@ ChunkFileResult_t CMapFile::LoadEntityCallback(CChunkFile *pFile, int nParam)
 		}
 
 		//
-		// func_ladder brushes are moved into the world entity.  We convert the func_ladder to an info_ladder
-		// that holds the ladder's mins and maxs, and leave the entity.  This helps the bots figure out ladders.
+		// func_ladder brushes are moved into the world entity.  We convert the func_ladder to an info_ladder that
+		// holds the ladder's mins and maxs, and leave the entity.  This helps third-party bots figure out ladders.
 		//
 		if ( !strcmp( "func_ladder", pClassName ) )
 		{
