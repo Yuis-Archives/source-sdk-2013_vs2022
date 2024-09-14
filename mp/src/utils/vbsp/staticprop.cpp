@@ -674,6 +674,13 @@ void EmitStaticProps()
 			{
 				build.m_LightmapResolutionX = IntForKey( &entities[i], "lightmapresolutionx" );
 				build.m_LightmapResolutionY = IntForKey( &entities[i], "lightmapresolutiony" );
+				if ( ( build.m_LightmapResolutionX < 1) || ( build.m_LightmapResolutionY < 1) )
+				{
+					Warning("Static prop %s has one or more lightmap dimensions set less than one; this is invalid! Disabling lightmapping for %s.", pEntity );
+					build.m_Flags |= STATIC_PROP_NO_PER_TEXEL_LIGHTING;
+					build.m_LightmapResolutionX = 0;
+					build.m_LightmapResolutionY = 0;
+				}
 			}
 
 			const char *pKey = ValueForKey( &entities[i], "fadescale" );
