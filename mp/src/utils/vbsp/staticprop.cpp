@@ -632,7 +632,16 @@ void EmitStaticProps()
 			build.m_Solid = IntForKey( &entities[i], "solid" );
 			build.m_Skin = IntForKey( &entities[i], "skin" );
 			build.m_FadeMaxDist = FloatForKey( &entities[i], "fademaxdist" );
-			build.m_Flags = 0;//IntForKey( &entities[i], "spawnflags" ) & STATIC_PROP_WC_MASK;
+
+			// allow spawnflags, so that we can add new flags to VRAD without modifying VRAD
+			if (IntForKey( &entities[i], "spawnflags" ) > 0)
+			{
+				build.m_Flags = IntForKey( &entities[i], "spawnflags" );
+			}
+			else
+			{
+				build.m_Flags = 0;//IntForKey( &entities[i], "spawnflags" ) & STATIC_PROP_WC_MASK;
+			}
 			if (IntForKey( &entities[i], "ignorenormals" ) == 1)
 			{
 				build.m_Flags |= STATIC_PROP_IGNORE_NORMALS;
