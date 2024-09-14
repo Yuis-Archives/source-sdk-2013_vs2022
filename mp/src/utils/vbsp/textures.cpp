@@ -186,6 +186,14 @@ int	FindMiptex (const char *name)
 			textureref[i].contents |= CONTENTS_GRATE;
 		}
 
+		if ( ( propVal = GetMaterialVar( matID, "%compileDebris" ) ) && StringIsTrue( propVal ) )
+		{
+			// change contents to grate, so bullets pass through
+			// NOTE: This has effects on visibility too!
+			textureref[i].contents &= ~CONTENTS_SOLID;
+			textureref[i].contents |= CONTENTS_DEBRIS;
+		}
+
 		if( g_BumpAll || GetMaterialShaderPropertyBool( matID, UTILMATLIB_NEEDS_BUMPED_LIGHTMAPS ) )
 		{
 			textureref[i].flags |= SURF_BUMPLIGHT;
