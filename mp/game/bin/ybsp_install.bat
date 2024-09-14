@@ -7,3 +7,4 @@ copy ybsp.exe %hldms%\bin
 copy ybsp.exe %portal%\bin
 copy ybsp.exe %src13mp%\bin
 copy ybsp.exe %tf2%\bin
+pause
