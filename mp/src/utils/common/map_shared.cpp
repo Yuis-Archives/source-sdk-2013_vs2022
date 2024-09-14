@@ -35,7 +35,9 @@ ChunkFileResult_t LoadEntityKeyCallback(const char *szKey, const char *szValue, 
 		}
 		else if (!stricmp(szValue, "func_water"))
 		{
-			pLoadEntity->nBaseContents = CONTENTS_WATER;
+			// UNDONE: Unnecessary, as func_water is already 
+			// converted to CONTENTS_WATER by game code
+			//pLoadEntity->nBaseContents = CONTENTS_WATER;
 		}
 	}
 	else if (!stricmp(szKey, "id"))
