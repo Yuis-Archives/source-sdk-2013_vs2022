@@ -174,11 +174,11 @@ int	FindMiptex (const char *name)
 		// Handle L4D-style %CompileTeam
 		if ( ( propVal = GetMaterialVar( matID, "%compileTeam" ) ) )
 		{
-			if ( ( atoi(propval) ) == 1 )
+			if ( ( atoi(propVal) ) == 1 )
 			{
 				textureref[i].contents |= CONTENTS_TEAM1;
 			}
-			else if ( ( atoi(propval) ) == 2 )
+			else if ( ( atoi(propVal) ) == 2 )
 			{
 				textureref[i].contents |= CONTENTS_TEAM2;
 			}
