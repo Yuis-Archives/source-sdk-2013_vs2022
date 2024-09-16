@@ -303,33 +303,33 @@ int	FindMiptex (const char *name)
 		// (Don't work in Portal 2 and newer, as the enums are replaced with brush paint and clips for grenades and drones)
 		if ( propVal = GetMaterialVar( matID, "%compilePush_X" ) )
 		{
-			if ( ( atoi(propVal) ) == 1 )
+			if ( ( atoi(propVal) ) > 0 )
 			{
 				textureref[i].contents |= CONTENTS_CURRENT_0;
 			}
-			else if ( ( atoi(propVal) ) == -1 )
+			else if ( ( atoi(propVal) ) < 0 )
 			{
 				textureref[i].contents |= CONTENTS_CURRENT_180;
 			}
 		}
 		if ( propVal = GetMaterialVar( matID, "%compilePush_Y" ) )
 		{
-			if ( ( atoi(propVal) ) == 1 )
+			if ( ( atoi(propVal) ) > 0 )
 			{
 				textureref[i].contents |= CONTENTS_CURRENT_90;
 			}
-			else if ( ( atoi(propVal) ) == -1 )
+			else if ( ( atoi(propVal) ) < 0 )
 			{
 				textureref[i].contents |= CONTENTS_CURRENT_270;
 			}
 		}
 		if ( propVal = GetMaterialVar( matID, "%compilePush_Z" ) )
 		{
-			if ( ( atoi(propVal) ) == 1 )
+			if ( ( atoi(propVal) ) > 0 )
 			{
 				textureref[i].contents |= CONTENTS_CURRENT_UP;
 			}
-			else if ( ( atoi(propVal) ) == -1 )
+			else if ( ( atoi(propVal) ) < 0 )
 			{
 				textureref[i].contents |= CONTENTS_CURRENT_DOWN;
 			}
