@@ -69,7 +69,7 @@ bool		g_bNoHiddenManifestMaps = false;
 bool		g_bNoDefaultCubemaps = true;
 bool		g_bSkyboxCubemaps = false;
 bool		g_bPropperInsertAllAsStatic = false;
-bool		g_bPropperStripEntities = false;
+bool		g_bPropperStripEntities = true;
 int			g_iDefaultCubemapSize = 32;
 
 #ifdef MAPBASE_VSCRIPT
@@ -1221,7 +1221,12 @@ int RunVBSP( int argc, char **argv )
 		}
 		else if ( !Q_stricmp( argv[i], "-strippropperentities" ) )
 		{
-			g_bPropperStripEntities = true;
+			// inert leftover from Mapbase; now occurs by default
+			//g_bPropperStripEntities = true;
+		}
+		else if ( !Q_stricmp( argv[i], "-keeppropperentities" ) )
+		{
+			g_bPropperStripEntities = false;
 		}
 #ifdef MAPBASE_VSCRIPT
 		else if ( !Q_stricmp( argv[i], "-scripting" ) )
