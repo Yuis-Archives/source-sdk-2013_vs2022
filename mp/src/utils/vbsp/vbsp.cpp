@@ -1054,11 +1054,15 @@ int RunVBSP( int argc, char **argv )
 			Msg ("snap axial = true\n");
 			g_snapAxialPlanes = true;
 		}
-#if 0
+#if 1
 		else if (!Q_stricmp(argv[i], "-maxlightmapdim"))
 		{
 			g_maxLightmapDimension = atof(argv[i+1]);
 			Msg ("g_maxLightmapDimension = %f\n", g_maxLightmapDimension);
+			if (g_maxLightmapDimension > 32)
+			{
+				Warning("Maximum per-face lightmap dimensions set higher than 32x32; this will not work with vanilla engine branches!");
+			}
 			i++;
 		}
 #endif
