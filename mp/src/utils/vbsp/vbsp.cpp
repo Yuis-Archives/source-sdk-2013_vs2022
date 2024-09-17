@@ -1102,10 +1102,11 @@ int RunVBSP( int argc, char **argv )
 		{
 			strcpy (g_outbase, "/tmp");
 		}
-#if 0
+#if 1
 		else if( !Q_stricmp( argv[i], "-defaultluxelsize" ) )
 		{
 			g_defaultLuxelSize = atof( argv[i+1] );
+			Msg ("g_defaultLuxelSize = %f\n", g_defaultLuxelSize);
 			i++;
 		}
 #endif
