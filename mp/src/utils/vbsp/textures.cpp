@@ -363,8 +363,8 @@ int	FindMiptex (const char *name)
 	// Explicitly set contents flags (only use if you know what you're doing!)
 	if ( ( propVal = GetMaterialVar( matID, "%contents_empty" ) ) &&	StringIsTrue( propVal ) )
 	{
-		// TODO - verify this actually works
-		textureref[i].contents &= ~CONTENTS_SOLID;
+		// shorthand for clearing all contents 
+		textureref[i].contents = 0;
 	}
 	if ( ( propVal = GetMaterialVar( matID, "%contents_solid" ) ) &&	StringIsTrue( propVal ) )
 	{
