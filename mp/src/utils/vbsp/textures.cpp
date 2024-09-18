@@ -352,208 +352,211 @@ int	FindMiptex (const char *name)
 			}
 			
 		}
+		
 		if ( textureref[i].flags & SURF_NOLIGHT )
 		{
 			textureref[i].flags &= ~SURF_BUMPLIGHT;
 		}
 
-		// Explicitly set contents flags (only use if you know what you're doing!)
-		if ( ( propVal = GetMaterialVar( matID, "%contents_empty" ) ) &&	StringIsTrue( propVal ) )
-		{
-			// TODO - verify this actually works
-			textureref[i].contents &= ~CONTENTS_SOLID;
-		}
-		if ( ( propVal = GetMaterialVar( matID, "%contents_solid" ) ) &&	StringIsTrue( propVal ) )
-		{
-			textureref[i].contents |= CONTENTS_SOLID;
-		}
-		if ( ( propVal = GetMaterialVar( matID, "%contents_window" ) ) &&	StringIsTrue( propVal ) )
-		{
-			textureref[i].contents |= CONTENTS_WINDOW;
-		}
-		if ( ( propVal = GetMaterialVar( matID, "%contents_aux" ) ) &&	StringIsTrue( propVal ) )
-		{
-			textureref[i].contents |= CONTENTS_AUX;
-		}
-		if ( ( propVal = GetMaterialVar( matID, "%contents_grate" ) ) &&	StringIsTrue( propVal ) )
-		{
-			textureref[i].contents |= CONTENTS_GRATE;
-		}
-		if ( ( propVal = GetMaterialVar( matID, "%contents_slime" ) ) &&	StringIsTrue( propVal ) )
-		{
-			textureref[i].contents |= CONTENTS_SLIME;
-		}
-		if ( ( propVal = GetMaterialVar( matID, "%contents_water" ) ) &&	StringIsTrue( propVal ) )
-		{
-			textureref[i].contents |= CONTENTS_WATER;
-		}
-		if ( ( propVal = GetMaterialVar( matID, "%contents_blocklos" ) ) &&	StringIsTrue( propVal ) )
-		{
-			textureref[i].contents |= CONTENTS_BLOCKLOS;
-		}
-		if ( ( propVal = GetMaterialVar( matID, "%contents_opaque" ) ) &&	StringIsTrue( propVal ) )
-		{
-			textureref[i].contents |= CONTENTS_OPAQUE;
-		}
-		if ( ( propVal = GetMaterialVar( matID, "%contents_testfogvolume" ) ) &&	StringIsTrue( propVal ) )
-		{
-			textureref[i].contents |= CONTENTS_TESTFOGVOLUME;
-		}
-		if ( ( propVal = GetMaterialVar( matID, "%contents_unused" ) ) &&	StringIsTrue( propVal ) )
-		{
-			textureref[i].contents |= CONTENTS_UNUSED;
-		}
-		if ( ( propVal = GetMaterialVar( matID, "%contents_unused6" ) ) &&	StringIsTrue( propVal ) )
-		{
-			textureref[i].contents |= CONTENTS_UNUSED6;
-		}
-		if ( ( propVal = GetMaterialVar( matID, "%contents_team1" ) ) &&	StringIsTrue( propVal ) )
-		{
-			textureref[i].contents |= CONTENTS_TEAM1;
-		}
-		if ( ( propVal = GetMaterialVar( matID, "%contents_team2" ) ) &&	StringIsTrue( propVal ) )
-		{
-			textureref[i].contents |= CONTENTS_TEAM2;
-		}
-		if ( ( propVal = GetMaterialVar( matID, "%contents_ignore_nodraw_opaque" ) ) &&	StringIsTrue( propVal ) )
-		{
-			textureref[i].contents |= CONTENTS_IGNORE_NODRAW_OPAQUE;
-		}
-		if ( ( propVal = GetMaterialVar( matID, "%contents_moveable" ) ) &&	StringIsTrue( propVal ) )
-		{
-			textureref[i].contents |= CONTENTS_MOVEABLE;
-		}
-		if ( ( propVal = GetMaterialVar( matID, "%contents_areaportal" ) ) &&	StringIsTrue( propVal ) )
-		{
-			textureref[i].contents |= CONTENTS_AREAPORTAL;
-		}
-		if ( ( propVal = GetMaterialVar( matID, "%contents_playerclip" ) ) &&	StringIsTrue( propVal ) )
-		{
-			textureref[i].contents |= CONTENTS_PLAYERCLIP;
-		}
-		if ( ( propVal = GetMaterialVar( matID, "%contents_monsterclip" ) ) &&	StringIsTrue( propVal ) )
-		{
-			textureref[i].contents |= CONTENTS_MONSTERCLIP;
-		}
-		if ( ( propVal = GetMaterialVar( matID, "%contents_current_0" ) ) &&	StringIsTrue( propVal ) )
-		{
-			textureref[i].contents |= CONTENTS_CURRENT_0;
-		}
-		if ( ( propVal = GetMaterialVar( matID, "%contents_current_90" ) ) &&	StringIsTrue( propVal ) )
-		{
-			textureref[i].contents |= CONTENTS_CURRENT_90;
-		}
-		if ( ( propVal = GetMaterialVar( matID, "%contents_current_180" ) ) &&	StringIsTrue( propVal ) )
-		{
-			textureref[i].contents |= CONTENTS_CURRENT_180;
-		}
-		if ( ( propVal = GetMaterialVar( matID, "%contents_current_270" ) ) &&	StringIsTrue( propVal ) )
-		{
-			textureref[i].contents |= CONTENTS_CURRENT_270;
-		}
-		if ( ( propVal = GetMaterialVar( matID, "%contents_current_up" ) ) &&	StringIsTrue( propVal ) )
-		{
-			textureref[i].contents |= CONTENTS_CURRENT_UP;
-		}
-		if ( ( propVal = GetMaterialVar( matID, "%contents_current_down" ) ) &&	StringIsTrue( propVal ) )
-		{
-			textureref[i].contents |= CONTENTS_CURRENT_DOWN;
-		}
-		if ( ( propVal = GetMaterialVar( matID, "%contents_origin" ) ) &&	StringIsTrue( propVal ) )
-		{
-			textureref[i].contents |= CONTENTS_ORIGIN;
-		}
-		if ( ( propVal = GetMaterialVar( matID, "%contents_monster" ) ) &&	StringIsTrue( propVal ) )
-		{
-			textureref[i].contents |= CONTENTS_MONSTER;
-		}
-		if ( ( propVal = GetMaterialVar( matID, "%contents_debris" ) ) &&	StringIsTrue( propVal ) )
-		{
-			textureref[i].contents |= CONTENTS_DEBRIS;
-		}
-		if ( ( propVal = GetMaterialVar( matID, "%contents_detail" ) ) &&	StringIsTrue( propVal ) )
-		{
-			textureref[i].contents |= CONTENTS_DETAIL;
-		}
-		if ( ( propVal = GetMaterialVar( matID, "%contents_translucent" ) ) &&	StringIsTrue( propVal ) )
-		{
-			textureref[i].contents |= CONTENTS_TRANSLUCENT;
-		}
-		if ( ( propVal = GetMaterialVar( matID, "%contents_ladder" ) ) &&	StringIsTrue( propVal ) )
-		{
-			textureref[i].contents |= CONTENTS_LADDER;
-		}
-		if ( ( propVal = GetMaterialVar( matID, "%contents_hitbox" ) ) &&	StringIsTrue( propVal ) )
-		{
-			textureref[i].contents |= CONTENTS_HITBOX;
-		}
-
-		// Explicitly set surface flags (only use if you know what you're doing!)
-		if ( ( propVal = GetMaterialVar( matID, "%surf_light" ) ) &&	StringIsTrue( propVal ) )
-		{
-			textureref[i].contents |= SURF_LIGHT;
-		}
-		if ( ( propVal = GetMaterialVar( matID, "%surf_sky2d" ) ) &&	StringIsTrue( propVal ) )
-		{
-			textureref[i].contents |= SURF_SKY2D;
-		}
-		if ( ( propVal = GetMaterialVar( matID, "%surf_sky" ) ) &&	StringIsTrue( propVal ) )
-		{
-			textureref[i].contents |= SURF_SKY;
-		}
-		if ( ( propVal = GetMaterialVar( matID, "%surf_warp" ) ) &&	StringIsTrue( propVal ) )
-		{
-			textureref[i].contents |= SURF_WARP;
-		}
-		if ( ( propVal = GetMaterialVar( matID, "%surf_trans" ) ) &&	StringIsTrue( propVal ) )
-		{
-			textureref[i].contents |= SURF_TRANS;
-		}
-		if ( ( propVal = GetMaterialVar( matID, "%surf_noportal" ) ) &&	StringIsTrue( propVal ) )
-		{
-			textureref[i].contents |= SURF_NOPORTAL;
-		}
-		if ( ( propVal = GetMaterialVar( matID, "%surf_trigger" ) ) &&	StringIsTrue( propVal ) )
-		{
-			textureref[i].contents |= SURF_TRIGGER;
-		}
-		if ( ( propVal = GetMaterialVar( matID, "%surf_nodraw" ) ) &&	StringIsTrue( propVal ) )
-		{
-			textureref[i].contents |= SURF_NODRAW;
-		}
-		if ( ( propVal = GetMaterialVar( matID, "%surf_hint" ) ) &&	StringIsTrue( propVal ) )
-		{
-			textureref[i].contents |= SURF_HINT;
-		}
-		if ( ( propVal = GetMaterialVar( matID, "%surf_skip" ) ) &&	StringIsTrue( propVal ) )
-		{
-			textureref[i].contents |= SURF_SKIP;
-		}
-		if ( ( propVal = GetMaterialVar( matID, "%surf_nolight" ) ) &&	StringIsTrue( propVal ) )
-		{
-			textureref[i].contents |= SURF_NOLIGHT;
-		}
-		if ( ( propVal = GetMaterialVar( matID, "%surf_bumplight" ) ) &&	StringIsTrue( propVal ) )
-		{
-			textureref[i].contents |= SURF_BUMPLIGHT;
-		}
-		if ( ( propVal = GetMaterialVar( matID, "%surf_noshadows" ) ) &&	StringIsTrue( propVal ) )
-		{
-			textureref[i].contents |= SURF_NOSHADOWS;
-		}
-		if ( ( propVal = GetMaterialVar( matID, "%surf_nodecals" ) ) &&	StringIsTrue( propVal ) )
-		{
-			textureref[i].contents |= SURF_NODECALS;
-		}
-		if ( ( propVal = GetMaterialVar( matID, "%surf_nochop" ) ) &&	StringIsTrue( propVal ) )
-		{
-			textureref[i].contents |= SURF_NOCHOP;
-		}
-		if ( ( propVal = GetMaterialVar( matID, "%surf_hitbox" ) ) &&	StringIsTrue( propVal ) )
-		{
-			textureref[i].contents |= SURF_HITBOX;
-		}
 	}
+
+	// Explicitly set contents flags (only use if you know what you're doing!)
+	if ( ( propVal = GetMaterialVar( matID, "%contents_empty" ) ) &&	StringIsTrue( propVal ) )
+	{
+		// TODO - verify this actually works
+		textureref[i].contents &= ~CONTENTS_SOLID;
+	}
+	if ( ( propVal = GetMaterialVar( matID, "%contents_solid" ) ) &&	StringIsTrue( propVal ) )
+	{
+		textureref[i].contents |= CONTENTS_SOLID;
+	}
+	if ( ( propVal = GetMaterialVar( matID, "%contents_window" ) ) &&	StringIsTrue( propVal ) )
+	{
+		textureref[i].contents |= CONTENTS_WINDOW;
+	}
+	if ( ( propVal = GetMaterialVar( matID, "%contents_aux" ) ) &&	StringIsTrue( propVal ) )
+	{
+		textureref[i].contents |= CONTENTS_AUX;
+	}
+	if ( ( propVal = GetMaterialVar( matID, "%contents_grate" ) ) &&	StringIsTrue( propVal ) )
+	{
+		textureref[i].contents |= CONTENTS_GRATE;
+	}
+	if ( ( propVal = GetMaterialVar( matID, "%contents_slime" ) ) &&	StringIsTrue( propVal ) )
+	{
+		textureref[i].contents |= CONTENTS_SLIME;
+	}
+	if ( ( propVal = GetMaterialVar( matID, "%contents_water" ) ) &&	StringIsTrue( propVal ) )
+	{
+		textureref[i].contents |= CONTENTS_WATER;
+	}
+	if ( ( propVal = GetMaterialVar( matID, "%contents_blocklos" ) ) &&	StringIsTrue( propVal ) )
+	{
+		textureref[i].contents |= CONTENTS_BLOCKLOS;
+	}
+	if ( ( propVal = GetMaterialVar( matID, "%contents_opaque" ) ) &&	StringIsTrue( propVal ) )
+	{
+		textureref[i].contents |= CONTENTS_OPAQUE;
+	}
+	if ( ( propVal = GetMaterialVar( matID, "%contents_testfogvolume" ) ) &&	StringIsTrue( propVal ) )
+	{
+		textureref[i].contents |= CONTENTS_TESTFOGVOLUME;
+	}
+	if ( ( propVal = GetMaterialVar( matID, "%contents_unused" ) ) &&	StringIsTrue( propVal ) )
+	{
+		textureref[i].contents |= CONTENTS_UNUSED;
+	}
+	if ( ( propVal = GetMaterialVar( matID, "%contents_unused6" ) ) &&	StringIsTrue( propVal ) )
+	{
+		textureref[i].contents |= CONTENTS_UNUSED6;
+	}
+	if ( ( propVal = GetMaterialVar( matID, "%contents_team1" ) ) &&	StringIsTrue( propVal ) )
+	{
+		textureref[i].contents |= CONTENTS_TEAM1;
+	}
+	if ( ( propVal = GetMaterialVar( matID, "%contents_team2" ) ) &&	StringIsTrue( propVal ) )
+	{
+		textureref[i].contents |= CONTENTS_TEAM2;
+	}
+	if ( ( propVal = GetMaterialVar( matID, "%contents_ignore_nodraw_opaque" ) ) &&	StringIsTrue( propVal ) )
+	{
+		textureref[i].contents |= CONTENTS_IGNORE_NODRAW_OPAQUE;
+	}
+	if ( ( propVal = GetMaterialVar( matID, "%contents_moveable" ) ) &&	StringIsTrue( propVal ) )
+	{
+		textureref[i].contents |= CONTENTS_MOVEABLE;
+	}
+	if ( ( propVal = GetMaterialVar( matID, "%contents_areaportal" ) ) &&	StringIsTrue( propVal ) )
+	{
+		textureref[i].contents |= CONTENTS_AREAPORTAL;
+	}
+	if ( ( propVal = GetMaterialVar( matID, "%contents_playerclip" ) ) &&	StringIsTrue( propVal ) )
+	{
+		textureref[i].contents |= CONTENTS_PLAYERCLIP;
+	}
+	if ( ( propVal = GetMaterialVar( matID, "%contents_monsterclip" ) ) &&	StringIsTrue( propVal ) )
+	{
+		textureref[i].contents |= CONTENTS_MONSTERCLIP;
+	}
+	if ( ( propVal = GetMaterialVar( matID, "%contents_current_0" ) ) &&	StringIsTrue( propVal ) )
+	{
+		textureref[i].contents |= CONTENTS_CURRENT_0;
+	}
+	if ( ( propVal = GetMaterialVar( matID, "%contents_current_90" ) ) &&	StringIsTrue( propVal ) )
+	{
+		textureref[i].contents |= CONTENTS_CURRENT_90;
+	}
+	if ( ( propVal = GetMaterialVar( matID, "%contents_current_180" ) ) &&	StringIsTrue( propVal ) )
+	{
+		textureref[i].contents |= CONTENTS_CURRENT_180;
+	}
+	if ( ( propVal = GetMaterialVar( matID, "%contents_current_270" ) ) &&	StringIsTrue( propVal ) )
+	{
+		textureref[i].contents |= CONTENTS_CURRENT_270;
+	}
+	if ( ( propVal = GetMaterialVar( matID, "%contents_current_up" ) ) &&	StringIsTrue( propVal ) )
+	{
+		textureref[i].contents |= CONTENTS_CURRENT_UP;
+	}
+	if ( ( propVal = GetMaterialVar( matID, "%contents_current_down" ) ) &&	StringIsTrue( propVal ) )
+	{
+		textureref[i].contents |= CONTENTS_CURRENT_DOWN;
+	}
+	if ( ( propVal = GetMaterialVar( matID, "%contents_origin" ) ) &&	StringIsTrue( propVal ) )
+	{
+		textureref[i].contents |= CONTENTS_ORIGIN;
+	}
+	if ( ( propVal = GetMaterialVar( matID, "%contents_monster" ) ) &&	StringIsTrue( propVal ) )
+	{
+		textureref[i].contents |= CONTENTS_MONSTER;
+	}
+	if ( ( propVal = GetMaterialVar( matID, "%contents_debris" ) ) &&	StringIsTrue( propVal ) )
+	{
+		textureref[i].contents |= CONTENTS_DEBRIS;
+	}
+	if ( ( propVal = GetMaterialVar( matID, "%contents_detail" ) ) &&	StringIsTrue( propVal ) )
+	{
+		textureref[i].contents |= CONTENTS_DETAIL;
+	}
+	if ( ( propVal = GetMaterialVar( matID, "%contents_translucent" ) ) &&	StringIsTrue( propVal ) )
+	{
+		textureref[i].contents |= CONTENTS_TRANSLUCENT;
+	}
+	if ( ( propVal = GetMaterialVar( matID, "%contents_ladder" ) ) &&	StringIsTrue( propVal ) )
+	{
+		textureref[i].contents |= CONTENTS_LADDER;
+	}
+	if ( ( propVal = GetMaterialVar( matID, "%contents_hitbox" ) ) &&	StringIsTrue( propVal ) )
+	{
+		textureref[i].contents |= CONTENTS_HITBOX;
+	}
+
+	// Explicitly set surface flags (only use if you know what you're doing!)
+	if ( ( propVal = GetMaterialVar( matID, "%surf_light" ) ) &&	StringIsTrue( propVal ) )
+	{
+		textureref[i].contents |= SURF_LIGHT;
+	}
+	if ( ( propVal = GetMaterialVar( matID, "%surf_sky2d" ) ) &&	StringIsTrue( propVal ) )
+	{
+		textureref[i].contents |= SURF_SKY2D;
+	}
+	if ( ( propVal = GetMaterialVar( matID, "%surf_sky" ) ) &&	StringIsTrue( propVal ) )
+	{
+		textureref[i].contents |= SURF_SKY;
+	}
+	if ( ( propVal = GetMaterialVar( matID, "%surf_warp" ) ) &&	StringIsTrue( propVal ) )
+	{
+		textureref[i].contents |= SURF_WARP;
+	}
+	if ( ( propVal = GetMaterialVar( matID, "%surf_trans" ) ) &&	StringIsTrue( propVal ) )
+	{
+		textureref[i].contents |= SURF_TRANS;
+	}
+	if ( ( propVal = GetMaterialVar( matID, "%surf_noportal" ) ) &&	StringIsTrue( propVal ) )
+	{
+		textureref[i].contents |= SURF_NOPORTAL;
+	}
+	if ( ( propVal = GetMaterialVar( matID, "%surf_trigger" ) ) &&	StringIsTrue( propVal ) )
+	{
+		textureref[i].contents |= SURF_TRIGGER;
+	}
+	if ( ( propVal = GetMaterialVar( matID, "%surf_nodraw" ) ) &&	StringIsTrue( propVal ) )
+	{
+		textureref[i].contents |= SURF_NODRAW;
+	}
+	if ( ( propVal = GetMaterialVar( matID, "%surf_hint" ) ) &&	StringIsTrue( propVal ) )
+	{
+		textureref[i].contents |= SURF_HINT;
+	}
+	if ( ( propVal = GetMaterialVar( matID, "%surf_skip" ) ) &&	StringIsTrue( propVal ) )
+	{
+		textureref[i].contents |= SURF_SKIP;
+	}
+	if ( ( propVal = GetMaterialVar( matID, "%surf_nolight" ) ) &&	StringIsTrue( propVal ) )
+	{
+		textureref[i].contents |= SURF_NOLIGHT;
+	}
+	if ( ( propVal = GetMaterialVar( matID, "%surf_bumplight" ) ) &&	StringIsTrue( propVal ) )
+	{
+		textureref[i].contents |= SURF_BUMPLIGHT;
+	}
+	if ( ( propVal = GetMaterialVar( matID, "%surf_noshadows" ) ) &&	StringIsTrue( propVal ) )
+	{
+		textureref[i].contents |= SURF_NOSHADOWS;
+	}
+	if ( ( propVal = GetMaterialVar( matID, "%surf_nodecals" ) ) &&	StringIsTrue( propVal ) )
+	{
+		textureref[i].contents |= SURF_NODECALS;
+	}
+	if ( ( propVal = GetMaterialVar( matID, "%surf_nochop" ) ) &&	StringIsTrue( propVal ) )
+	{
+		textureref[i].contents |= SURF_NOCHOP;
+	}
+	if ( ( propVal = GetMaterialVar( matID, "%surf_hitbox" ) ) &&	StringIsTrue( propVal ) )
+	{
+		textureref[i].contents |= SURF_HITBOX;
+	}
+	
 
 	nummiptex++;
 
