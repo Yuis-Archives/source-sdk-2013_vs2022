@@ -634,14 +634,8 @@ void EmitStaticProps()
 			build.m_FadeMaxDist = FloatForKey( &entities[i], "fademaxdist" );
 
 			// allow spawnflags, so that we can add new flags to VRAD without modifying VBSP
-			if (IntForKey( &entities[i], "spawnflags" ) > 0)
-			{
-				build.m_Flags = IntForKey( &entities[i], "spawnflags" );
-			}
-			else
-			{
-				build.m_Flags = 0;//IntForKey( &entities[i], "spawnflags" ) & STATIC_PROP_WC_MASK;
-			}
+			build.m_Flags = IntForKeyWithDefault( &entities[i], "spawnflags", 0 );
+			
 			if (IntForKey( &entities[i], "ignorenormals" ) == 1)
 			{
 				build.m_Flags |= STATIC_PROP_IGNORE_NORMALS;
