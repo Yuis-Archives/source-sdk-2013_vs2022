@@ -676,6 +676,14 @@ void EmitStaticProps()
 					build.m_LightmapResolutionY = 0;
 				}
 			}
+			
+			if ( g_bGmodCompat )
+			{
+				if (IntForKey( &entities[i], "enablelightbounce" ) == 1)
+				{
+					build.m_Flags |= STATIC_PROP_GMOD_ENABLE_LIGHT_BOUNCE;
+				}
+			}
 
 			const char *pKey = ValueForKey( &entities[i], "fadescale" );
 			if ( pKey && pKey[0] )

@@ -72,6 +72,8 @@ bool		g_bPropperInsertAllAsStatic = false;
 bool		g_bPropperStripEntities = true;
 int			g_iDefaultCubemapSize = 32;
 
+bool		g_bGmodCompat = true; // Compatibility with GMod's VRAD, for static prop bounce
+
 #ifdef MAPBASE_VSCRIPT
 ScriptLanguage_t	g_iScripting = SL_NONE;
 #endif
@@ -1232,6 +1234,15 @@ int RunVBSP( int argc, char **argv )
 		else if ( !Q_stricmp( argv[i], "-keeppropperentities" ) )
 		{
 			g_bPropperStripEntities = false;
+		}
+		else if ( !Q_stricmp( argv[i], "-gmodcompat" ) )
+		{
+			// inert; GMod compatibility is enabled by default for now
+			//g_bGmodCompat = true;
+		}
+		else if ( !Q_stricmp( argv[i], "-nogmodcompat" ) )
+		{
+			g_bGmodCompat = false;
 		}
 #ifdef MAPBASE_VSCRIPT
 		else if ( !Q_stricmp( argv[i], "-scripting" ) )
