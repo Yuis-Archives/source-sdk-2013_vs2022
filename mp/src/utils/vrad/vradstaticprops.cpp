@@ -701,9 +701,17 @@ public:
 			if ( pVMT->LoadFromBuffer( pMaterialName, buf ) )
 			{
 				bFound = true;
-				if ( pVMT->FindKey("$translucent") || pVMT->FindKey("$alphatest") )
-				{
-					KeyValues *pBaseTexture = pVMT->FindKey("$basetexture");
+				if ( pVMT->FindKey("$alphatest") || pVMT->FindKey("$translucent") || pVMT->FindKey("%alphatexture") )
+                {
+					KeyValues *pBaseTexture = NULL;
+					if ( pVMT->FindKey("%alphatexture") )
+                    {
+                        pBaseTexture = pVMT->FindKey("%alphatexture");
+                    }
+                    else
+                    {
+                        pBaseTexture = pVMT->FindKey("$basetexture");
+                    }
 					if ( pBaseTexture )
 					{
 						const char *pBaseTextureName = pBaseTexture->GetString();
