@@ -935,7 +935,7 @@ int RunVBSP( int argc, char **argv )
 
 	LoadCmdLineFromFile( argc, argv, g_mapbase, "vbsp" );
 
-	Msg( "Valve Software - vbsp.exe (%s)\n", __DATE__ );
+	Msg( "Valve Software - ybsp.exe (%s)\n", __DATE__ );
 
 	for (i=1 ; i<argc ; i++)
 	{
